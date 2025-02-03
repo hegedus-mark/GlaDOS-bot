@@ -17,7 +17,7 @@ export class ScoreRepository {
             ON CONFLICT (userId)
             DO UPDATE SET score = score + ?`);
 
-        stmt.run(userScore.userId, userScore, userScore);
+        stmt.run(userScore.userId, userScore.score, userScore.score);
     }
 
     getLeaderboard( limit: number = 10): UserScore[] {
