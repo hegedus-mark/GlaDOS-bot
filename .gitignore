@@ -2,3 +2,7 @@
 node_modules/
 .idea/
 dist/
+
+app-db
+app-db-shm
+app-db-wal
