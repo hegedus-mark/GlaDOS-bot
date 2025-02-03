@@ -14,20 +14,19 @@ export class ScoreRepository {
         const stmt = this.db.prepare(`
             INSERT INTO scores(userId, score)
             VALUES (?, ?)
-            ON CONFLICT (userId, guildId)
+            ON CONFLICT (userId)
             DO UPDATE SET score = score + ?`);
 
         stmt.run(userScore.userId, userScore, userScore);
     }
 
-    getLeaderboard(guildId: string, limit: number = 10): UserScore[] {
+    getLeaderboard( limit: number = 10): UserScore[] {
         const stmt = this.db.prepare(`
-            SELECT userId, guildId, score
+            SELECT userId, score
             FROM scores
-            WHERE guildId = ?
             ORDER BY score DESC
             LIMIT ?
         `);
-        return stmt.all(guildId, limit) as UserScore[];
+        return stmt.all(limit) as UserScore[];
     }
 }
