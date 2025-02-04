@@ -15,12 +15,21 @@ export class ScoreRepository {
             INSERT INTO scores(userId, score)
             VALUES (?, ?)
             ON CONFLICT (userId)
-            DO UPDATE SET score = score + ?`);
+                DO UPDATE SET score = score + ?`);
 
         stmt.run(userScore.userId, userScore.score, userScore.score);
     }
 
-    getLeaderboard( limit: number = 10): UserScore[] {
+    getScore(userId: string): UserScore {
+        const stmt = this.db.prepare(`
+            SELECT userId, score
+            FROM scores
+            WHERE userId = ?`);
+
+        return stmt.get(userId) as UserScore;
+    }
+
+    getLeaderboard(limit: number = 10): UserScore[] {
         const stmt = this.db.prepare(`
             SELECT userId, score
             FROM scores

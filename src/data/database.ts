@@ -3,7 +3,7 @@ import {ScoreRepository} from "./repositories/score-repository.js";
 
 export class AppDatabase{
     private readonly db: Database.Database;
-    private scoreRepository: ScoreRepository;
+    scoreRepository: ScoreRepository;
 
 
     constructor(dbPath: string) {

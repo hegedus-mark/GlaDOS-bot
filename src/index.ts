@@ -6,7 +6,7 @@ import {fileURLToPath, pathToFileURL} from 'url';
 import {AppDatabase} from "./data/database.js";
 
 
-type AppChatInputCommandInteraction = ChatInputCommandInteraction & {
+export type AppChatInputCommandInteraction = ChatInputCommandInteraction & {
     client: AppClient;
 }
 
