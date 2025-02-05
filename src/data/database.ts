@@ -17,7 +17,7 @@ export class AppDatabase{
     private initTables(): void{
         this.db.exec(`CREATE TABLE IF NOT EXISTS scores
                       (
-                          userId TEXT NOT NULL,
+                          userId TEXT NOT NULL UNIQUE,
                           score  INTEGER DEFAULT 0
                       )`);
     }

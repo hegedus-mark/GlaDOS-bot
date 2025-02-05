@@ -1,4 +1,4 @@
-import {ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder} from "discord.js";
+import {EmbedBuilder, SlashCommandBuilder} from "discord.js";
 import {AppChatInputCommandInteraction} from "../../index.js";
 
 export const command = {
@@ -24,7 +24,7 @@ export const command = {
 
         const leaderBoardString = leaderBoard
             .map((userScore, index) => {
-                const userMention = `<@&${userScore.userId}>`;
+                const userMention = `<@${userScore.userId}>`;
                 return `${index}. ${userMention} — Score: ${userScore.score}`;
             })
             .join("\n");
