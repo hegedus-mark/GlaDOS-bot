@@ -16,12 +16,10 @@ export const command = {
         const user = optionsUser ? optionsUser : interaction.user;
 
         const repository = interaction.client.db.scoreRepository;
-        const score = repository.getScore(user.id);
+        const userScore = repository.getScore(user.id);
 
         const embed = new EmbedBuilder()
-            .setTitle("Your score")
-            .setTitle(`${user.username}'s score`)
-            .setDescription("Your score is: " + score);
+            .setDescription(`<@${userScore.userId}> score is: ${userScore.score}`);
 
         await interaction.reply({embeds: [embed]})
     },
