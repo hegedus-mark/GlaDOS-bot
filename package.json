@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "rimraf dist && tsc",
-    "start": "tsc && node dist/index.js",
-    "dev": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" node src/index.ts",
+    "start": "npm run build && node dist/index.js",
+    "dev": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" nodemon src/index.ts",
     "deploy-commands": "npm run build && node dist/deploy-commands.js",
     "lint": "eslint . ",
     "lint:fix": "eslint . --fix"
@@ -28,6 +28,7 @@
     "eslint": "^9.19.0",
     "eslint-config-prettier": "^10.0.1",
     "globals": "^15.14.0",
+    "nodemon": "^3.1.9",
     "prettier": "^3.4.2",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
